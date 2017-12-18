@@ -1,0 +1,110 @@
+.page-content {
+    background-color: #fff;
+}
+.table-course {
+    height: 100%;
+    table-layout: fixed;
+    overflow: scroll;
+    border-collapse: collapse;
+    margin-left: 2rem;
+}
+.table-time {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 100%;
+    background: #fff;
+}
+.table-time > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table-course th, .table-time {
+    font-weight: 300;
+    padding: 0;
+}
+.table-course th {
+    line-height: 2.5;
+}
+.table-course td {
+    padding: 0;
+    width: 10%;
+}
+.table-item {
+    margin: 0.12rem 0.08rem;
+    height: calc(100% - 0.24rem);
+    color: #fff;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.3rem 0.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.table-item-1 {
+    background-color: rgb(69,200,220);
+}
+.table-item-2 {
+    background-color: rgb(167,213,154);
+}
+.table-item-3 {
+    background-color: rgb(252,171,83);
+}
+.table-item-4 {
+    background-color: rgb(140,136,255);
+}
+.table-item-5 {
+    background-color: rgb(80,210,194);
+}
+.table-item-6 {
+    background-color: rgb(255,51,102);
+}
+.table-item-7 {
+    background-color: rgb(0,185,255);
+}
+.table-item-null, .table-item-invalid {
+    background-color: rgb(242,244,244);
+}
+.table-item-invalid {
+    color: #666;
+}
+.table-border {
+    border-bottom: 2px solid rgb(230,230,230);
+}
+.layui-m-layerchild {
+    width: 70% !important;
+}
+.layui-m-layerchild > h3 {
+    background: rgb(29, 170, 240);
+    color: #fff;
+    margin: 0;
+}
+.layui-m-layercont {
+    text-align: left !important;
+    padding: 20px 30px !important;
+}
+.course-title {
+    font-size: 0.85rem;
+    color: #bbb;
+    margin: 0.5rem 0;
+}
+.course-content, .course-footer {
+    font-size: 1.1rem;
+    color: #000;
+    margin: 0.5rem 0;
+}
+.course-footer {
+    text-align: center;
+    margin: 2rem 0.5rem -0.3rem;
+}
+.course-divide {
+    margin: 0;
+    line-height: 0.3rem !important;
+}
+.layui-m-layershade {
+    background-color: rgba(0,0,0,0.5) !important;
+}/* =========
+Your custom styles go here
+ ========= */
