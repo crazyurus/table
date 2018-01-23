@@ -28,9 +28,10 @@
   },
   "homepage": "https://web.wutnews,net/table",
   "dependencies": {
-    "framework7": "^2.0.0",
+    "framework7": "^1.0.0",
     "framework7-vue": "^0.9.4",
-    "vue": "^2.5.11"
+    "vue": "^2.5.11",
+    "axios": "^0.17.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
