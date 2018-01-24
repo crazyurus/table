@@ -4,35 +4,35 @@
     <f7-list form>
         <f7-list-item>
             <f7-label>课程名称</f7-label>
-            <f7-input type="text" placeholder="如：Token大学" required v-model.trim="course.KCMC" />
+            <f7-input type="text" placeholder="如：Token大学" required v-model.trim="course.name" />
         </f7-list-item>
         <f7-list-item>
             <f7-label>任课教师</f7-label>
-            <f7-input type="text" placeholder="选填" v-model.trim="course.JSXM" />
+            <f7-input type="text" placeholder="选填" v-model.trim="course.teacher.name" />
         </f7-list-item>
         <f7-list-item>
             <f7-label>上课地点</f7-label>
-            <f7-input type="text" placeholder="如：新1-101" v-model.trim="course.JSBH" />
+            <f7-input type="text" placeholder="如：新1-101" v-model.trim="course.classroom" />
         </f7-list-item>
         <f7-list-item>
             <f7-label>开始周</f7-label>
-            <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course_add.start" />
+            <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course.time.start" />
         </f7-list-item>
         <f7-list-item>
             <f7-label>结束周</f7-label>
-            <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course_add.end" />
+            <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course.time.end" />
         </f7-list-item>
         <f7-list-item>
             <f7-label>是否区分单双周</f7-label>
-            <f7-input type="select" required v-model="course_add.odd">
-                <option value="0">不区分</option>
+            <f7-input type="select" required v-model="course.time.odd">
+                <option value="">不区分</option>
                 <option value="单">仅单周</option>
                 <option value="双">仅双周</option>
             </f7-input>
         </f7-list-item>
         <f7-list-item>
             <f7-label>上课周次</f7-label>
-            <f7-input type="select" required v-model="course_add.week">
+            <f7-input type="select" required v-model="course.period.week">
                 <option value="">请选择</option>
                 <option value="1">星期一</option>
                 <option value="2">星期二</option>
@@ -45,13 +45,13 @@
         </f7-list-item>
         <f7-list-item>
             <f7-label>上课节次</f7-label>
-            <f7-input type="select" required v-model="course_add.jc">
+            <f7-input type="select" required v-model="course.period.section">
                 <option value="">请选择</option>
-                <option value="1-2">第一大节（8:00-9:40）</option>
-                <option value="3-4">第二大节（10:10-11:50）</option>
-                <option value="5-6">第三大节（2:00-3:40）</option>
-                <option value="7-8">第四大节（4:00-5:40）</option>
-                <option value="9-11">第五大节（6:30以后）</option>
+                <option value="1">第一大节（8:00-9:40）</option>
+                <option value="2">第二大节（10:10-11:50）</option>
+                <option value="3">第三大节（2:00-3:40）</option>
+                <option value="4">第四大节（4:00-5:40）</option>
+                <option value="5">第五大节（6:30以后）</option>
             </f7-input>
         </f7-list-item>
         <div class="button-area">
@@ -66,31 +66,10 @@
   export default {
     name: 'token-form',
     props: ['course'],
-    data() {
-      return {
-        course_add: {}
-      }
-    },
-    watch: {
-      course() {
-        // const jc = this.course.ZC.split('-');
-        // this.course_add.start = parseInt(jc[0]);
-        // this.course_add.end = parseInt(jc[1]);
-        // this.course_add.odd = jc[1].indexOf('单') > -1 ? '单' : jc[1].indexOf('双') > -1 ? '双' : '0';
-        // this.course_add.week = this.course.JC.charAt(0);
-        // this.course_add.jc = this.course.JC.substring(1);
-      }
-    },
     methods: {
       addCourse() {
-        const course = {
-          KCMC: this.course.KCMC,
-          JSXM: this.course.KCMC,
-          JSBH: this.course.KCMC,
-          ZC: this.course_add.start + '-' + this.course_add.end + this.course_add.odd + '周',
-          JC: this.course_add.week + this.course_add.jc
-        };
-        this.$emit('add-course', course);
+        if(this.course.time.odd === undefined) this.course.time.odd = '';
+        this.$emit('add-course', this.course);
         this.$f7.closeModal('.popup-course');
       }
     }
@@ -114,5 +93,8 @@
         border: 1px solid rgba(0, 0, 0, 0.2) !important;
         line-height: 40px !important;
         height: 42px !important;
+    }
+    .ios .btn-default {
+        border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
     }
 </style>

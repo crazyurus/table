@@ -20,32 +20,32 @@
       showCourseList() {
         const self = this;
 
-        if (this.course.length == 1) this.showCourseDetail(this.course[0]);
+        if (this.course.length === 1) this.showCourseDetail(this.course[0]);
         else {
-          const buttons = [{
+          let buttons = [{
             text: '该节次对应多门课程',
             label: true
           }];
-          this.course.map((item) => {
-            buttons.push({
+          let courses = this.course.map((item) => {
+            return {
               text: item.name,
               onClick() {
                 self.showCourseDetail(item)
               }
-            })
+            }
           });
-          const groups = [ buttons, [{
+          const cancel = [{
             text: '关闭',
             color: 'red'
-          }
-          ]];
+          }];
+          const groups = [buttons.concat(courses), cancel];
           this.$f7.actions(groups);
         }
       },
       showCourseDetail(course) {
         layer.open({
           title: course.name,
-          content: '<p class="course-title">授课教师</p><p class="course-content">' + course.teacher + '</p><p class="course-divide">&nbsp;</p><p class="course-title">授课时间</p><p class="course-content">' + course.time + '</p><p class="course-divide">&nbsp;</p><p class="course-title">建议反馈</p><p class="course-content">Token团队</p><p class="course-divide">&nbsp;</p><p class="course-footer">' + course.classroom + '</p>'
+          content: '<p class="course-title">授课教师</p><p class="course-content">' + course.teacher.name + '</p><p class="course-divide">&nbsp;</p><p class="course-title">授课时间</p><p class="course-content">' + course.time + '</p><p class="course-divide">&nbsp;</p><p class="course-title">建议反馈</p><p class="course-content">Token团队</p><p class="course-divide">&nbsp;</p><p class="course-footer">' + course.classroom + '</p>'
         });
       }
     }

@@ -9,13 +9,10 @@
         <table class="table-course">
             <thead class="table-border">
             <tr>
-                <th>一</th>
-                <th>二</th>
-                <th>三</th>
-                <th>四</th>
-                <th>五</th>
-                <th>六</th>
-                <th>日</th>
+                <th v-for="item in renderWeekList">
+                    <p>周{{item.week}}</p>
+                    <p>{{item.day}}日</p>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -37,49 +34,47 @@
     components: {
       'token-table-item': Item
     },
-    props: ['course', 'week'],
+    props: ['course', 'week', 'start'],
     computed: {
-      renderCourseList() {
-        // 节次编号
-        const jc_arr = {
-          '1-2': 0,
-          '3-4': 1,
-          '5-6': 2,
-          '7-8': 3,
-          '9-10': 4,
-          '9-11': 4
-        };
-        let courseList = [];
+      renderWeekList() {
+        const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
+        const start = new Date(this.start.replace(/-/, '/')).getTime();
+        const length = 7 * (this.week - 1);
 
+        return week_arr.map((item, index) => {
+          let day = new Date(start + (length + index) * 24 * 3600 * 1000);
+          console.log(day)
+          return {
+            week: item,
+            day: day.getDate()
+          };
+        });
+      },
+      renderCourseList() {
         // 分析是否在当前周
-        this.course.map((item) => {
-          // 对节次进行分析
-          let jc = item.ZC.split('-');
-          let jc_flag = false;
-          jc[0] = parseInt(jc[0]);
-          jc.push(jc[1]);
-          if (jc[2].charAt(0) === '0') jc[2] = jc[2].substring(1);
-          jc[1] = parseInt(jc[1]);
-          if (jc[0] <= this.week && jc[1] >= this.week) {
-            jc_flag = true;
+        let courseList = this.course.map((item) => {
+          let valid = false;
+          if (item.time.start <= this.week && this.week <= item.time.end) {
+            valid = true;
             // 单双周判断
-            if (item.ZC.indexOf('单') > -1 && this.week % 2 === 0) jc_flag = false;
-            else if (item.ZC.indexOf('双') > -1 && this.week % 2 === 1) jc_flag = false;
+            if (item.time.odd === '单' && this.week % 2 === 0) valid = false;
+            else if (item.time.odd === '双' && this.week % 2 === 1) valid = false;
           }
 
           // 生成周数字符串
-          let jc_str = '';
-          if (jc[0] === jc[1]) jc_str = '第' + jc[0] + '周';
-          else jc_str = '第' + jc[0] + '-' + jc[2];
+          let time = '';
+          if (item.time.start === item.time.end) time = '第' + item.time.start + '周';
+          else time = '第' + item.time.start + '-' + item.time.end + item.time.odd + '周';
 
-          courseList.push({
-            name: item.KCMC,
-            teacher: item.JSXM,
-            time: jc_str,
-            classroom: item.JSBH,
-            valid: jc_flag,
-            jc: item.JC
-          });
+          return {
+            id: item.id,
+            name: item.name,
+            teacher: item.teacher,
+            time: time,
+            classroom: item.classroom,
+            valid: valid,
+            period: item.period
+          }
         });
 
         // 按照valid排序
@@ -99,14 +94,10 @@
 
         // 生成周结构数组
         courseList.map((item) => {
-          // 获取周次和节次
-          let week = item.jc.charAt(0);
-          let section = item.jc.substring(1);
-
           // 放入课程列表中
-          delete item.jc;
           if (!item.valid) item.time += '（非本周）';
-          course[jc_arr[section]][week - 1].push(item);
+          course[item.period.section - 1][item.period.week - 1].push(item);
+          delete item.period;
         });
         return course;
       }
@@ -125,6 +116,9 @@
     }
     .table-course tbody {
         height: calc(100% - 37px);
+    }
+    .table-time-blank {
+        height: 47px;
     }
     .table-time {
         position: fixed;
@@ -148,9 +142,14 @@
     .table-course th, .table-time {
         font-weight: 300;
         padding: 0;
+        font-size: 0.8rem;
     }
     .table-course th {
-        line-height: 2.5;
+        padding: 0.2rem 0;
+    }
+    .table-course th > p {
+        margin: 0;
+        line-height: 1.6;
     }
     .table-course tbody tr {
         height: 20%;
@@ -198,6 +197,6 @@
         color: #666;
     }
     .table-border {
-        border-bottom: 2px solid rgb(230,230,230);
+        border-bottom: 1px solid rgb(230,230,230);
     }
 </style>

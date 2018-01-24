@@ -4,7 +4,7 @@
       <f7-view main>
         <f7-pages>
           <f7-page>
-            <token-table :course="course" :week="4"></token-table>
+            <token-table :course="course" :week="week" :start="start"></token-table>
             <f7-fab @click="showPopup">
               <f7-icon icon="icon-plus"></f7-icon>
             </f7-fab>
@@ -29,21 +29,28 @@
 <script>
   import Table from './components/table'
   import Form from './components/form'
+  import Course from './course.js'
 
   export default {
     components: {
       'token-table': Table,
       'token-form': Form
     },
+    mounted() {
+      document.title = '第' + this.week + '周';
+    },
     data() {
       return {
         course: require('../mock/student.json').data.course,
-        current: {}
+        week: 4,
+        start: '2017-09-04',
+        current: new Course()
       }
     },
     methods: {
       showPopup() {
-        this.$f7.popup('.popup-course')
+        if (!this.current.id) this.current = new Course();
+        this.$f7.popup('.popup-course');
       },
       addCourse(course) {
         this.course.push(course);
