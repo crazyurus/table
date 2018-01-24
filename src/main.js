@@ -11,6 +11,7 @@ import App from './app'
 
 Vue.use(Framework7Vue)
 Vue.prototype.$http = axios
+require('../mock.js')
 
 new Vue({
   el: '#app',

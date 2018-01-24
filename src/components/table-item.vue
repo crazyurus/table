@@ -9,7 +9,7 @@
 <script>
   export default {
     name: 'token-table-item',
-    props: ['course', 'week', 'no'],
+    props: ['course', 'week'],
     computed: {
       color() {
         if (this.course[0].valid) return this.week + 1;

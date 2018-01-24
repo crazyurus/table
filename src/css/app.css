@@ -2,49 +2,59 @@
     background-color: #fff;
     overflow-y: hidden;
 }
+
 .layui-m-layershade {
-    background-color: rgba(0,0,0,0.5) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .layui-m-layerchild {
     width: 70% !important;
 }
+
 .layui-m-layerchild > h3 {
     background: rgb(29, 170, 240);
     color: #fff;
     margin: 0;
 }
+
 .layui-m-layercont {
     text-align: left !important;
     padding: 20px 30px !important;
 }
+
 .course-title {
     font-size: 0.85rem;
     color: #bbb;
     margin: 0.5rem 0;
 }
+
 .course-content, .course-footer {
     font-size: 1.1rem;
     color: #000;
     margin: 0.5rem 0;
 }
+
 .course-footer {
     text-align: center;
     margin: 2rem 0.5rem -0.3rem;
 }
+
 .course-divide {
     margin: 0;
     line-height: 0.3rem !important;
 }
+
 .floating-button {
     background: #45c8dc;
     bottom: 2rem !important;
     z-index: 1500;
-    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
 }
+
 .floating-button.active-state {
     background: rgb(128, 213, 234);
 }
+
 i.icon.icon-plus {
     width: 24px;
     height: 24px;

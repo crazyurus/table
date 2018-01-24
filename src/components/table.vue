@@ -1,7 +1,34 @@
 <template>
     <div style="height: 100%;">
         <div class="table-time">
-            <div class="table-time-blank"></div>
+            <div class="table-time-blank">
+                <select v-model="week" title="切换周数">
+                    <option value="1">第1周</option>
+                    <option value="2">第2周</option>
+                    <option value="3">第3周</option>
+                    <option value="4">第4周</option>
+                    <option value="5">第5周</option>
+                    <option value="6">第6周</option>
+                    <option value="7">第7周</option>
+                    <option value="8">第8周</option>
+                    <option value="9">第9周</option>
+                    <option value="10">第10周</option>
+                    <option value="11">第11周</option>
+                    <option value="12">第12周</option>
+                    <option value="13">第13周</option>
+                    <option value="14">第14周</option>
+                    <option value="15">第15周</option>
+                    <option value="16">第16周</option>
+                    <option value="17">第17周</option>
+                    <option value="18">第18周</option>
+                    <option value="19">第19周</option>
+                    <option value="20">第20周</option>
+                    <option value="21">第21周</option>
+                    <option value="22">第22周</option>
+                    <option value="23">第23周</option>
+                    <option value="24">第24周</option>
+                </select>
+            </div>
             <div class="table-time-morning">上<br>午</div>
             <div class="table-time-afternoon">下<br>午</div>
             <div class="table-time-evening">晚<br>上</div>
@@ -9,7 +36,7 @@
         <table class="table-course">
             <thead class="table-border">
             <tr>
-                <th v-for="item in renderWeekList">
+                <th v-for="item in renderWeekList" :class="{ current: item.current }">
                     <p>周{{item.week}}</p>
                     <p>{{item.day}}日</p>
                 </th>
@@ -18,7 +45,7 @@
             <tbody>
                 <tr v-for="(line, index) in renderCourseList" :class="{'table-border': index == 1 || index == 3}">
                     <td v-for="(item, week) in line">
-                        <token-table-item :course="item" :week="week" :no="index"></token-table-item>
+                        <token-table-item :course="item" :week="week"></token-table-item>
                     </td>
                 </tr>
             </tbody>
@@ -34,19 +61,25 @@
     components: {
       'token-table-item': Item
     },
+    watch: {
+      week() {
+        this.$emit('change-week', this.week);
+      }
+    },
     props: ['course', 'week', 'start'],
     computed: {
       renderWeekList() {
         const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
-        const start = new Date(this.start.replace(/-/, '/')).getTime();
+        const start = new Date(this.start + 'T00:00:00').getTime();
         const length = 7 * (this.week - 1);
+        const current = new Date();
 
         return week_arr.map((item, index) => {
           let day = new Date(start + (length + index) * 24 * 3600 * 1000);
-          console.log(day)
           return {
             week: item,
-            day: day.getDate()
+            day: day.getDate(),
+            current: day.toDateString() === current.toDateString()
           };
         });
       },
@@ -119,6 +152,17 @@
     }
     .table-time-blank {
         height: 47px;
+        background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M106.666667%20810.666667V298.666667h810.666666v512c0%2046.933333-38.4%2085.333333-85.333333%2085.333333H192c-46.933333%200-85.333333-38.4-85.333333-85.333333z%22%20fill%3D%22%23CFD8DC%22%20p-id%3D%228162%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M917.333333%20213.333333v128H106.666667v-128c0-46.933333%2038.4-85.333333%2085.333333-85.333333h640c46.933333%200%2085.333333%2038.4%2085.333333%2085.333333z%22%20fill%3D%22%23F44336%22%20p-id%3D%228163%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M704%20213.333333m-64%200a64%2064%200%201%200%20128%200%2064%2064%200%201%200-128%200Z%22%20fill%3D%22%23B71C1C%22%20p-id%3D%228164%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M320%20213.333333m-64%200a64%2064%200%201%200%20128%200%2064%2064%200%201%200-128%200Z%22%20fill%3D%22%23B71C1C%22%20p-id%3D%228165%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M704%2064c-23.466667%200-42.666667%2019.2-42.666667%2042.666667v106.666666c0%2023.466667%2019.2%2042.666667%2042.666667%2042.666667s42.666667-19.2%2042.666667-42.666667V106.666667c0-23.466667-19.2-42.666667-42.666667-42.666667zM320%2064c-23.466667%200-42.666667%2019.2-42.666667%2042.666667v106.666666c0%2023.466667%2019.2%2042.666667%2042.666667%2042.666667s42.666667-19.2%2042.666667-42.666667V106.666667c0-23.466667-19.2-42.666667-42.666667-42.666667z%22%20fill%3D%22%23B0BEC5%22%20p-id%3D%228166%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M277.333333%20426.666667h85.333334v85.333333h-85.333334zM405.333333%20426.666667h85.333334v85.333333h-85.333334zM533.333333%20426.666667h85.333334v85.333333h-85.333334zM661.333333%20426.666667h85.333334v85.333333h-85.333334zM277.333333%20554.666667h85.333334v85.333333h-85.333334zM405.333333%20554.666667h85.333334v85.333333h-85.333334zM533.333333%20554.666667h85.333334v85.333333h-85.333334zM661.333333%20554.666667h85.333334v85.333333h-85.333334zM277.333333%20682.666667h85.333334v85.333333h-85.333334zM405.333333%20682.666667h85.333334v85.333333h-85.333334zM533.333333%20682.666667h85.333334v85.333333h-85.333334zM661.333333%20682.666667h85.333334v85.333333h-85.333334z%22%20fill%3D%22%2390A4AE%22%20p-id%3D%228167%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") no-repeat center;
+        background-size: 20px 20px;
+        position: relative;
+    }
+    .table-time-blank select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
     }
     .table-time {
         position: fixed;
@@ -129,10 +173,10 @@
         background: #fff;
     }
     .table-time-morning, .table-time-afternoon {
-        height: 40%;
+        height: calc(40% - 18.8px);
     }
     .table-time-evening {
-        height: 20%;
+        height: calc(20% - 9.4px);
     }
     .table-time > div {
         display: flex;
@@ -146,6 +190,9 @@
     }
     .table-course th {
         padding: 0.2rem 0;
+    }
+    .table-course th.current {
+        background: rgb(136, 239, 255);
     }
     .table-course th > p {
         margin: 0;
