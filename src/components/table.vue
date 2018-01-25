@@ -192,7 +192,8 @@
         padding: 0.2rem 0;
     }
     .table-course th.current {
-        background: rgb(136, 239, 255);
+        background: #45c8dc;
+        color: #fff;
     }
     .table-course th > p {
         margin: 0;
