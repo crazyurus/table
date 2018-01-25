@@ -74,7 +74,7 @@
     computed: {
       renderWeekList() {
         const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
-        const start = new Date(this.$store.state.start + 'T00:00:00').getTime();
+        const start = new Date('2017-09-04 00:00:00').getTime();
         const length = 7 * (this.week - 1);
         const current = new Date();
 
@@ -84,7 +84,7 @@
             week: item,
             day: day.getDate(),
             current: day.toDateString() === current.toDateString()
-          };
+          }
         });
       },
       renderCourseList() {
