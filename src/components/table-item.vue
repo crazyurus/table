@@ -26,7 +26,7 @@
             text: '该节次对应多门课程',
             label: true
           }];
-          let courses = this.course.map((item) => {
+          let courses = this.course.map(item => {
             return {
               text: item.name,
               onClick() {

@@ -4,7 +4,7 @@
             <f7-view main>
                 <f7-pages>
                     <f7-page>
-                        <token-table :course="course" :week="week" :start="start" @change-week="calcWeek"></token-table>
+                        <token-table @change-title="changeTitle"></token-table>
                         <f7-fab @click="showPopup">
                             <f7-icon icon="icon-plus"></f7-icon>
                         </f7-fab>
@@ -18,7 +18,7 @@
             <f7-view>
                 <f7-pages>
                     <f7-page>
-                        <token-form @add-course="addCourse" :course="current"></token-form>
+                        <token-form :course="current"></token-form>
                     </f7-page>
                 </f7-pages>
             </f7-view>
@@ -37,25 +37,16 @@
       'token-form': Form
     },
     mounted() {
-      this.$http.get('/table/index/api').then((response) => {
+      this.$http.get('/table/index/api').then(response => {
         const data = response.data.data;
-        this.week = data.week;
-        this.course = data.course;
-        this.start = data.start;
+
+        this.$store.commit('init', data);
+        this.changeTitle(data.week);
       });
     },
     data() {
       return {
-        course: [],
-        week: 0,
-        start: '',
         current: new Course()
-      }
-    },
-    watch: {
-      week() {
-        if (this.week < 1) document.title = '放假中';
-        else document.title = '第' + this.week + '周';
       }
     },
     methods: {
@@ -63,11 +54,9 @@
         if (!this.current.id) this.current = new Course();
         this.$f7.popup('.popup-course');
       },
-      addCourse(course) {
-        this.course.push(course);
-      },
-      calcWeek(week) {
-        this.week = week;
+      changeTitle(week) {
+        if (week < 1) document.title = '放假中';
+        else document.title = '第' + week + '周';
       }
     }
   }

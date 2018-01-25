@@ -69,7 +69,7 @@
     methods: {
       addCourse() {
         if(this.course.time.odd === undefined) this.course.time.odd = '';
-        this.$emit('add-course', this.course);
+        this.$store.commit('add', this.course);
         this.$f7.closeModal('.popup-course');
       }
     }

@@ -43,7 +43,7 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="(line, index) in renderCourseList" :class="{'table-border': index == 1 || index == 3}">
+                <tr v-for="(line, index) in renderCourseList" :class="{ 'table-border': index == 1 || index == 3 }">
                     <td v-for="(item, week) in line">
                         <token-table-item :course="item" :week="week"></token-table-item>
                     </td>
@@ -61,16 +61,20 @@
     components: {
       'token-table-item': Item
     },
-    watch: {
-      week() {
-        this.$emit('change-week', this.week);
+    data() {
+      return {
+        week: this.$store.state.week
       }
     },
-    props: ['course', 'week', 'start'],
+    watch: {
+      week() {
+        this.$emit('change-title', this.week);
+      }
+    },
     computed: {
       renderWeekList() {
         const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
-        const start = new Date(this.start + 'T00:00:00').getTime();
+        const start = new Date(this.$store.state.start + 'T00:00:00').getTime();
         const length = 7 * (this.week - 1);
         const current = new Date();
 
@@ -85,7 +89,7 @@
       },
       renderCourseList() {
         // 分析是否在当前周
-        let courseList = this.course.map((item) => {
+        let courseList = this.$store.state.course.map(item => {
           let valid = false;
           if (item.time.start <= this.week && this.week <= item.time.end) {
             valid = true;
@@ -126,7 +130,7 @@
         }
 
         // 生成周结构数组
-        courseList.map((item) => {
+        courseList.map(item => {
           // 放入课程列表中
           if (!item.valid) item.time += '（非本周）';
           course[item.period.section - 1][item.period.week - 1].push(item);
