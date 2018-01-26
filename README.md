@@ -1,8 +1,8 @@
 # 课程表
 
-Framework7 + Vue + Webpack 
+Vue + Vuex + Framework7 + Webpack 
 
-## Build Setup
+## 安装
 
 ``` bash
 # install dependencies
@@ -15,12 +15,13 @@ npm run dev
 npm run build
 ```
 
-## Project Structure
+## 目录结构
 
-* `src/assets` - folder with static assets (images)
 * `src/components` - folder with custom `.vue` components
-* `src/css` - put custom app CSS styles here. Don't forget to import them in `main.js`
+* `src/store` - Vuex相关
+* `src/css` - put custom app CSS styles here
 * `src/pages` - app `.vue` pages
 * `src/main.js` - main app file where you include/import all required libs and init app
-* `src/routes.js` - app routes
+* `src/mock.js` - mock
+* `src/course.js` - 课程类
 * `src/app.vue` - main app structure/component

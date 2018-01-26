@@ -1,6 +1,6 @@
 <template>
     <div>
-    <f7-block-title>添加自定义课程</f7-block-title>
+    <f7-block-title>{{course.id ? '编辑' : '添加'}}自定义课程</f7-block-title>
     <f7-list form>
         <f7-list-item>
             <f7-label>课程名称</f7-label>
@@ -55,7 +55,7 @@
             </f7-input>
         </f7-list-item>
         <div class="button-area">
-            <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse">添加</f7-button>
+            <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse">{{course.id ? '保存' : '添加'}}</f7-button>
             <f7-button class="btn-default button-big button-fill close-popup">关闭</f7-button>
         </div>
     </f7-list>
@@ -82,7 +82,10 @@
     methods: {
       addCourse() {
         if (this.course.time.odd === undefined) this.course.time.odd = '';
-        if (this.course.id) this.$store.commit('edit', this.course);
+        if (this.course.id) this.$store.commit('edit', {
+          current: this.current,
+          course: this.course
+        });
         else {
           this.course.id = 1;
           this.$store.commit('add', this.course);
@@ -97,24 +100,24 @@
 </script>
 
 <style scoped>
-    .button-area {
-        margin-top: 2rem;
-        padding: 0 1rem;
-    }
-    .btn-primary {
-        color: #fff;
-        background: #45c8dc !important;
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-    .btn-default {
-        color: #000000 !important;
-        background-color: #F8F8F8 !important;
-        border: 1px solid rgba(0, 0, 0, 0.2) !important;
-        line-height: 40px !important;
-        height: 42px !important;
-    }
-    .ios .btn-default {
-        border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
-    }
+  .button-area {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  .btn-primary {
+    color: #fff;
+    background: #45c8dc !important;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .btn-default {
+    color: #000000 !important;
+    background-color: #F8F8F8 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    line-height: 40px !important;
+    height: 42px !important;
+  }
+  .ios .btn-default {
+    border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+  }
 </style>

@@ -81,13 +81,8 @@
           }
 
           return {
-            id: item.id,
-            name: item.name,
-            teacher: item.teacher,
-            time: item.time,
-            classroom: item.classroom,
-            valid: valid,
-            period: item.period
+            ...item,
+            valid: valid
           }
         });
 
@@ -97,7 +92,7 @@
           return a.valid ? -1 : 1;
         });
 
-        // 初始化课程表
+        // 初始化课程表（5*7）
         let course = [];
         for (let i = 0; i < 5; ++i) {
           course.push([]);
@@ -106,11 +101,9 @@
           }
         }
 
-        // 生成周结构数组
+        // 放入课程列表中
         courseList.map(item => {
-          // 放入课程列表中
           course[item.period.section - 1][item.period.week - 1].push(item);
-          delete item.period;
         });
         return course;
       }

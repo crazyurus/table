@@ -19,8 +19,8 @@ export default new Vuex.Store({
     add(state, course) {
       state.course.push(course);
     },
-    edit(state, course) {
-
+    edit(state, payload) {
+      payload.current = payload.course;
     },
     current(state, current) {
       state.current = current;
