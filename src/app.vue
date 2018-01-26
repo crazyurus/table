@@ -14,11 +14,11 @@
         </f7-views>
 
         <!-- 添加自定义课程 -->
-        <f7-popup class="popup-course">
+        <f7-popup class="popup-course" @popup:open="popupOpen">
             <f7-view>
                 <f7-pages>
                     <f7-page>
-                        <token-form :course="current"></token-form>
+                        <token-form :current="$store.state.current"></token-form>
                     </f7-page>
                 </f7-pages>
             </f7-view>
@@ -29,7 +29,6 @@
 <script>
   import Table from './components/table'
   import Form from './components/form'
-  import Course from './course.js'
 
   export default {
     components: {
@@ -43,15 +42,12 @@
         this.$store.commit('init', data);
       });
     },
-    data() {
-      return {
-        current: new Course()
-      }
-    },
     methods: {
       showPopup() {
-        if (!this.current.id) this.current = new Course();
+        this.$store.commit('current', {});
         this.$f7.popup('.popup-course');
+      },
+      popupOpen() {
       },
       changeTitle(week) {
         if (week < 1) document.title = '放假中';

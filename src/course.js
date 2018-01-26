@@ -1,19 +1,20 @@
 export default class Course {
   constructor() {
+    this.id = 0;
     this.name = '';
     this.classroom = '';
     this.teacher = {
       name: '',
-      sno: null
-    };
-    this.period = {
-      start: 0,
-      end: 0,
-      odd: ''
+      sno: undefined
     };
     this.time = {
-      week: 1,
-      section: 1
+      start: undefined,
+      end: undefined,
+      odd: ''
+    };
+    this.period = {
+      week: 0,
+      section: 0
     }
   }
 }

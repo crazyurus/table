@@ -33,7 +33,7 @@
         <f7-list-item>
             <f7-label>上课周次</f7-label>
             <f7-input type="select" required v-model="course.period.week">
-                <option value="">请选择</option>
+                <option value="0">请选择</option>
                 <option value="1">星期一</option>
                 <option value="2">星期二</option>
                 <option value="3">星期三</option>
@@ -46,7 +46,7 @@
         <f7-list-item>
             <f7-label>上课节次</f7-label>
             <f7-input type="select" required v-model="course.period.section">
-                <option value="">请选择</option>
+                <option value="0">请选择</option>
                 <option value="1">第一大节（8:00-9:40）</option>
                 <option value="2">第二大节（10:10-11:50）</option>
                 <option value="3">第三大节（2:00-3:40）</option>
@@ -63,14 +63,34 @@
 </template>
 
 <script>
+  import Course from '../course.js'
+
   export default {
     name: 'token-form',
-    props: ['course'],
+    props: ['current'],
+    data() {
+      return {
+        course: new Course()
+      }
+    },
+    watch: {
+      current() {
+        if (this.current.id) this.course = this.clone(this.current);
+        else this.course = new Course();
+      }
+    },
     methods: {
       addCourse() {
-        if(this.course.time.odd === undefined) this.course.time.odd = '';
-        this.$store.commit('add', this.course);
+        if (this.course.time.odd === undefined) this.course.time.odd = '';
+        if (this.course.id) this.$store.commit('edit', this.course);
+        else {
+          this.course.id = 1;
+          this.$store.commit('add', this.course);
+        }
         this.$f7.closeModal('.popup-course');
+      },
+      clone(obj) {
+        return JSON.parse(JSON.stringify(obj));
       }
     }
   }

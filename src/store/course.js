@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     course: [],
     week: 0,
+    current: {},
     start: ''
   },
   mutations: {
@@ -17,6 +18,12 @@ export default new Vuex.Store({
     },
     add(state, course) {
       state.course.push(course);
+    },
+    edit(state, course) {
+
+    },
+    current(state, current) {
+      state.current = current;
     }
   },
   strict: process.env.NODE_ENV !== 'production'

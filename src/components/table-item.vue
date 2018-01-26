@@ -54,6 +54,7 @@
           }
         });
 
+        this.$store.commit('current', course);
         this.$layer.open({
           title: course.name,
           anim: 'scale',  // vue-layer-mobile并没有实现这个默认是up，通过修改css fixed

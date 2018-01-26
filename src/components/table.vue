@@ -98,16 +98,11 @@
             else if (item.time.odd === '双' && this.week % 2 === 1) valid = false;
           }
 
-          // 生成周数字符串
-          let time = '';
-          if (item.time.start === item.time.end) time = '第' + item.time.start + '周';
-          else time = '第' + item.time.start + '-' + item.time.end + item.time.odd + '周';
-
           return {
             id: item.id,
             name: item.name,
             teacher: item.teacher,
-            time: time,
+            time: item.time,
             classroom: item.classroom,
             valid: valid,
             period: item.period
@@ -132,7 +127,6 @@
         // 生成周结构数组
         courseList.map(item => {
           // 放入课程列表中
-          if (!item.valid) item.time += '（非本周）';
           course[item.period.section - 1][item.period.week - 1].push(item);
           delete item.period;
         });

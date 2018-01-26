@@ -4,12 +4,12 @@
         <p class="course-content">{{course.teacher.name}}</p>
         <p class="course-divide">&nbsp;</p>
         <p class="course-title">授课时间</p>
-        <p class="course-content">{{course.time}}</p>
+        <p class="course-content">{{course.timeStr}}</p>
         <p class="course-divide">&nbsp;</p>
         <p class="course-title">建议反馈</p>
         <p class="course-content">Token团队</p>
         <p class="course-divide">&nbsp;</p>
-        <p v-if="course.id > 0"><a href="javascript:;">编辑自定义课程</a></p>
+        <p v-if="course.id > 0"><a href="javascript: f7.popup('.popup-course'); document.querySelector('.layui-m-layer').remove();">编辑自定义课程</a></p>
         <p class="course-footer">{{course.classroom}}</p>
     </div>
 </template>
@@ -17,7 +17,14 @@
 <script>
   export default {
     name: 'token-table-course',
-    props: ['course']
+    props: ['course'],
+    computed: {
+      timeStr() {
+        const valid = this.course.valid ? '（非本周）' : '';
+        if (this.course.time.start === this.course.time.time.end) return '第' + this.course.time.time.start + '周' + valid;
+        else return '第' + this.course.time.time.start + '-' + this.course.time.time.end + this.course.time.time.odd + '周' + valid;
+      }
+    }
   }
 </script>
 
