@@ -38,7 +38,7 @@
             <tr>
                 <th v-for="item in renderWeekList" :class="{ current: item.current }">
                     <p>周{{item.week}}</p>
-                    <p>{{item.day}}日</p>
+                    <p v-if="item.day">{{item.day}}日</p>
                 </th>
             </tr>
             </thead>
@@ -160,6 +160,7 @@
         background-size: 20px 20px;
         position: relative;
     }
+
     .table-time-blank select {
         position: absolute;
         top: 0;
@@ -167,6 +168,7 @@
         width: 100%;
         height: 100%;
         opacity: 0;
+        cursor: pointer;
     }
     .table-time {
         position: fixed;
@@ -194,6 +196,7 @@
     }
     .table-course th {
         padding: 0.2rem 0;
+        height: calc(46px - 0.4rem);
     }
     .table-course th.current {
         background: #45c8dc;
@@ -220,6 +223,9 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+    .table-item:not(.table-item-null) {
+        cursor: pointer;
     }
     .table-item-1 {
         background-color: rgb(69,200,220);
