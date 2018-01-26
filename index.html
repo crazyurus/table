@@ -9,20 +9,5 @@
 </head>
 <body>
   <div id="app"></div>
-  <script type="text/x-template" id="courseTemplate">
-    <div>
-      <p class="course-title">授课教师</p>
-      <p class="course-content">{{course.teacher.name}}</p>
-      <p class="course-divide">&nbsp;</p>
-      <p class="course-title">授课时间</p>
-      <p class="course-content">{{course.time}}</p>
-      <p class="course-divide">&nbsp;</p>
-      <p class="course-title">建议反馈</p>
-      <p class="course-content">Token团队</p>
-      <p class="course-divide">&nbsp;</p>
-      <p v-if="course.id > 0"><a href="javascript:;">编辑自定义课程</a></p>
-      <p class="course-footer">{{course.classroom}}</p>
-    </div>
-  </script>
 </body>
 </html>
