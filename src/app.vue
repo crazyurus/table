@@ -14,7 +14,7 @@
         </f7-views>
 
         <!-- 添加自定义课程 -->
-        <f7-popup class="popup-course" @popup:open="popupOpen">
+        <f7-popup class="popup-course">
             <f7-view>
                 <f7-pages>
                     <f7-page>
@@ -46,8 +46,6 @@
       showPopup() {
         this.$store.commit('current', {});
         this.$f7.popup('.popup-course');
-      },
-      popupOpen() {
       },
       changeTitle(week) {
         if (week < 1) document.title = '放假中';
