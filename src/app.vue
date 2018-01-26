@@ -4,7 +4,7 @@
             <f7-view main>
                 <f7-pages>
                     <f7-page>
-                        <token-table @change-title="changeTitle"></token-table>
+                        <token-table :week="$store.state.week" :course="$store.state.course" :start="$store.state.start" @change-title="changeTitle"></token-table>
                         <f7-fab @click="showPopup">
                             <f7-icon icon="icon-plus"></f7-icon>
                         </f7-fab>
@@ -41,7 +41,6 @@
         const data = response.data.data;
 
         this.$store.commit('init', data);
-        this.changeTitle(data.week);
       });
     },
     data() {

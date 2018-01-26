@@ -61,10 +61,10 @@
     components: {
       'token-table-item': Item
     },
-    data() {
-      return {
-        week: this.$store.state.week
-      }
+    props: {
+      course: Array,
+      week: Number,
+      start: String
     },
     watch: {
       week() {
@@ -74,7 +74,7 @@
     computed: {
       renderWeekList() {
         const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
-        const start = new Date('2017-09-04 00:00:00').getTime();
+        const start = new Date(this.start + 'T00:00:00').getTime();
         const length = 7 * (this.week - 1);
         const current = new Date();
 
@@ -89,7 +89,7 @@
       },
       renderCourseList() {
         // 分析是否在当前周
-        let courseList = this.$store.state.course.map(item => {
+        let courseList = this.course.map(item => {
           let valid = false;
           if (item.time.start <= this.week && this.week <= item.time.end) {
             valid = true;
