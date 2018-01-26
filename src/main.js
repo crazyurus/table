@@ -5,13 +5,17 @@ import Framework7Vue from 'framework7-vue'
 import Framework7Theme from 'framework7/dist/css/framework7.ios.min.css'
 import Framework7ThemeColors from 'framework7/dist/css/framework7.ios.colors.min.css'
 
-import AppStyles from './css/app.css'
+import 'vue-layer-mobile/need/layer.css'
+import './css/app.css'
+import './css/layer.css'
+import App from './app'
 
 import axios from 'axios'
-import App from './app'
+import layer from 'vue-layer-mobile'
 import store from './store/course'
 
 Vue.use(Framework7Vue)
+Vue.use(layer)
 Vue.prototype.$http = axios
 if (process.env.NODE_ENV !== 'production') require('../mock.js')
 

@@ -3,6 +3,10 @@
     overflow-y: hidden;
 }
 
+a {
+    color: #45c8dc;
+}
+
 .layui-m-layershade {
     background-color: rgba(0, 0, 0, 0.5) !important;
 }

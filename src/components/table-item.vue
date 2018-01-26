@@ -43,9 +43,10 @@
         }
       },
       showCourseDetail(course) {
-        layer.open({
+        this.$layer.open({
           title: course.name,
-          content: '<p class="course-title">授课教师</p><p class="course-content">' + course.teacher.name + '</p><p class="course-divide">&nbsp;</p><p class="course-title">授课时间</p><p class="course-content">' + course.time + '</p><p class="course-divide">&nbsp;</p><p class="course-title">建议反馈</p><p class="course-content">Token团队</p><p class="course-divide">&nbsp;</p><p class="course-footer">' + course.classroom + '</p>'
+          anim: 'scale',  // vue-layer-mobile并没有实现这个默认是up，通过修改css fixed
+          content: '<p class="course-title">授课教师</p><p class="course-content">' + course.teacher.name + '</p><p class="course-divide">&nbsp;</p><p class="course-title">授课时间</p><p class="course-content">' + course.time + '</p><p class="course-divide">&nbsp;</p><p class="course-title">建议反馈</p><p class="course-content">Token团队</p><p class="course-divide">&nbsp;</p><p><a href="javascript:;" onclick="addToTable(this, \' + day + \', \' + no + \');">编辑自定义课程</a></p><p class="course-footer">' + course.classroom + '</p>'
         });
       }
     }
