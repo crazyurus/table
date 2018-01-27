@@ -1,5 +1,5 @@
 <template>
-    <div v-if="course.length === 0" class="table-item table-item-null"></div>
+    <div v-if="course.length === 0" class="table-item table-item-null" @click="addCourse"></div>
     <div v-else class="table-item" :class="'table-item-' + color" @click="showCourseList">
         <div>{{course[0].name}}</div>
         <div v-if="course[0].classroom">{{course[0].classroom}}</div>
@@ -8,11 +8,12 @@
 
 <script>
   import Vue from 'vue'
-  import Course from './table-course'
+  import Detail from './table-course'
+  import Course from '../course.js'
 
   export default {
     name: 'token-table-item',
-    props: ['course', 'week'],
+    props: ['course', 'week', 'no'],
     computed: {
       color() {
         if (this.course[0].valid) return this.week + 1;
@@ -20,6 +21,14 @@
       }
     },
     methods: {
+      addCourse() {
+        let course = new Course();
+        course.period.week = this.week + 1;
+        course.period.section = this.no + 1;
+
+        this.$store.commit('current', course);
+        this.$f7.popup('.popup-course');
+      },
       showCourseList() {
         const self = this;
 
@@ -46,7 +55,7 @@
         }
       },
       showCourseDetail(course) {
-        const CourseConstructor = Vue.extend(Course);
+        const CourseConstructor = Vue.extend(Detail);
         const instance = new CourseConstructor({
           parent: this,
           propsData: {

@@ -22,7 +22,7 @@
             <tbody>
                 <tr v-for="(line, index) in renderCourseList" :class="{ 'table-border': index == 1 || index == 3 }">
                     <td v-for="(item, week) in line">
-                        <token-table-item :course="item" :week="week"></token-table-item>
+                        <token-table-item :course="item" :week="week" :no="index"></token-table-item>
                     </td>
                 </tr>
             </tbody>
@@ -192,8 +192,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  .table-item:not(.table-item-null) {
     cursor: pointer;
   }
   .table-item-1 {

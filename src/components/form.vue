@@ -75,8 +75,7 @@
     },
     watch: {
       current() {
-        if (this.current.id) this.course = this.clone(this.current);
-        else this.course = new Course();
+        this.course = this.clone(this.current);
       }
     },
     methods: {
