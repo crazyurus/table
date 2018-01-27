@@ -8,6 +8,7 @@ export default new Vuex.Store({
     course: [],
     week: 0,
     current: {},
+    term: '',
     start: ''
   },
   mutations: {
@@ -15,6 +16,7 @@ export default new Vuex.Store({
       state.course = response.course;
       state.week = response.week;
       state.start = response.start;
+      state.term = response.term;
     },
     add(state, course) {
       state.course.push(course);

@@ -82,15 +82,34 @@
     methods: {
       addCourse() {
         if (this.course.time.odd === undefined) this.course.time.odd = '';
-        if (this.course.id) this.$store.commit('edit', this.course);
+        if (this.course.id) {
+          this.$http.post('/table/course/edit', {
+            course: this.course
+          }).catch(() => {
+            this.$f7.alert('网络请求错误');
+          });
+          this.$store.commit('edit', this.course);
+        }
         else {
-          this.course.id = 1;
-          this.$store.commit('add', this.course);
+          this.$http.post('/table/course/add', {
+            course: this.course,
+            term: this.$store.state.term
+          }).then(result => {
+            this.course.id = result.data.data;
+            this.$store.commit('add', this.course);
+          }).catch(() => {
+            this.$f7.alert('网络请求错误');
+          });;
         }
         this.closePopup();
       },
       deleteCourse() {
         this.$f7.confirm('确定要删除课程 <b>' + this.course.name + '</b> 吗？', () => {
+          this.$http.post('/table/course/delete', {
+            id: this.course.id
+          }).catch(() => {
+            this.$f7.alert('网络请求错误');
+          });
           this.$store.commit('delete');
           this.closePopup();
         });
