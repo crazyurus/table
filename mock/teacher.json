@@ -7,7 +7,7 @@
     "week": 21,
     "course": [
       {
-        "id": 0,
+        "id": 1,
         "kch": "4120335170",
         "name": "C\u7a0b\u5e8f\u8bbe\u8ba1\u57fa\u7840",
         "classroom": "\u65b03-206",
@@ -167,7 +167,7 @@
         }
       },
       {
-        "id": 0,
+        "id": 1,
         "kch": "4120029990",
         "name": "java\u7a0b\u5e8f\u8bbe\u8ba1\u8bed\u8a00",
         "classroom": "\u65b01-406",

@@ -56,6 +56,7 @@
         </f7-list-item>
         <div class="button-area">
             <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse">{{course.id ? '保存' : '添加'}}</f7-button>
+            <f7-button v-if="course.id" class="btn-danger button-big button-fill" @click="deleteCourse">删除</f7-button>
             <f7-button class="btn-default button-big button-fill close-popup">关闭</f7-button>
         </div>
     </f7-list>
@@ -86,6 +87,15 @@
           this.course.id = 1;
           this.$store.commit('add', this.course);
         }
+        this.closePopup();
+      },
+      deleteCourse() {
+        this.$f7.confirm('确定要删除课程 <b>' + this.course.name + '</b> 吗？', () => {
+          this.$store.commit('delete');
+          this.closePopup();
+        });
+      },
+      closePopup() {
         this.$f7.closeModal('.popup-course');
       },
       clone(obj) {
@@ -104,6 +114,13 @@
     color: #fff;
     background: #45c8dc !important;
     width: 100%;
+  }
+  .btn-danger {
+    color: #fff;
+    background: #ff3b30 !important;
+    width: 100%;
+  }
+  .btn-danger, .btn-primary {
     margin-bottom: 0.5rem;
   }
   .btn-default {

@@ -26,6 +26,12 @@ export default new Vuex.Store({
         else current[key] = course[key];
       }
     },
+    delete(state) {
+      const index = state.course.findIndex(item => {
+        return item === state.current;
+      });
+      state.course.splice(index, 1);
+    },
     current(state, current) {
       state.current = current;
     }

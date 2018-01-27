@@ -21,9 +21,12 @@ if (process.env.NODE_ENV !== 'production') require('../mock.js')
 
 new Vue({
   el: '#app',
-  template: '<app/>',
   framework7: {
-    root: '#app'
+    root: '#app',
+    pushState: true,
+    modalTitle: '课程表',
+    modalButtonOk: '确定',
+    modalButtonCancel: '取消'
   },
   store,
   render: h => h(App)
