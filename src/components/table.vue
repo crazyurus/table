@@ -51,6 +51,9 @@
     watch: {
       current() {
         this.$emit('change-title', this.current);
+      },
+      week() {
+        this.current = this.week;
       }
     },
     computed: {
@@ -171,6 +174,7 @@
   .table-course th.current {
     background: #45c8dc;
     color: #fff;
+    font-weight: normal;
   }
   .table-course th > p {
     margin: 0;
