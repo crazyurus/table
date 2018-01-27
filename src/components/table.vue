@@ -1,33 +1,33 @@
 <template>
-    <div style="height: 100%;">
-        <div class="table-time">
-            <div class="table-time-blank">
-                <select v-model="current" title="切换周数">
-                    <option v-for="i in 24" :value="i">第{{i}}周</option>
-                </select>
-            </div>
-            <div class="table-time-morning">上<br>午</div>
-            <div class="table-time-afternoon">下<br>午</div>
-            <div class="table-time-evening">晚<br>上</div>
-        </div>
-        <table class="table-course">
-            <thead class="table-border">
-            <tr>
-                <th v-for="item in renderWeekList" :class="{ current: item.current }">
-                    <p>周{{item.week}}</p>
-                    <p v-if="item.day">{{item.day}}日</p>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(line, index) in renderCourseList" :class="{ 'table-border': index == 1 || index == 3 }">
-                    <td v-for="(item, week) in line">
-                        <token-table-item :course="item" :week="week" :no="index"></token-table-item>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <div style="height: 100%;">
+    <div class="table-time">
+      <div class="table-time-blank">
+        <select v-model="current" title="切换周数">
+          <option v-for="i in 24" :value="i">第{{i}}周</option>
+        </select>
+      </div>
+      <div class="table-time-morning">上<br>午</div>
+      <div class="table-time-afternoon">下<br>午</div>
+      <div class="table-time-evening">晚<br>上</div>
     </div>
+    <table class="table-course">
+      <thead class="table-border">
+      <tr>
+        <th v-for="item in renderWeekList" :class="{ current: item.current }">
+          <p>周{{item.week}}</p>
+          <p v-if="item.day">{{item.day}}日</p>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(line, index) in renderCourseList" :class="{ 'table-border': index == 1 || index == 3 }">
+        <td v-for="(item, week) in line">
+          <token-table-item :course="item" :week="week" :no="index"></token-table-item>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -82,7 +82,8 @@
 
           return {
             ...item,
-            valid: valid
+            valid: valid,
+            origin: item
           }
         });
 

@@ -81,10 +81,7 @@
     methods: {
       addCourse() {
         if (this.course.time.odd === undefined) this.course.time.odd = '';
-        if (this.course.id) this.$store.commit('edit', {
-          current: this.current,
-          course: this.course
-        });
+        if (this.course.id) this.$store.commit('edit', this.course);
         else {
           this.course.id = 1;
           this.$store.commit('add', this.course);
