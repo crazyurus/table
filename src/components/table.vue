@@ -117,12 +117,15 @@
 
 <style scoped>
   .table-course {
+    position: absolute;
+    top: 0;
+    left: 2rem;
     height: 100%;
     width: calc(140% - 3rem);
     table-layout: fixed;
     overflow-x: scroll;
     border-collapse: collapse;
-    margin-left: 2rem;
+    -webkit-overflow-scrolling: touch;
   }
   .table-course tbody {
     height: calc(100% - 37px);
