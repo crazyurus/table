@@ -55,7 +55,7 @@
             </f7-input>
         </f7-list-item>
         <div class="button-area">
-            <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse">{{course.id ? '保存' : '添加'}}</f7-button>
+            <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse" :disabled="!course.name || !course.classroom">{{course.id ? '保存' : '添加'}}</f7-button>
             <f7-button v-if="course.id" class="btn-danger button-big button-fill" @click="deleteCourse">删除</f7-button>
             <f7-button class="btn-default button-big button-fill close-popup">关闭</f7-button>
         </div>
