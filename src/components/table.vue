@@ -13,7 +13,7 @@
     <table class="table-course">
       <thead class="table-border">
       <tr>
-        <th v-for="item in renderWeekList" :class="{ current: item.current }">
+        <th v-for="item in renderDayList" :class="{ current: item.current }">
           <p>周{{item.week}}</p>
           <p v-if="item.day">{{item.day}}日</p>
         </th>
@@ -57,7 +57,7 @@
       }
     },
     computed: {
-      renderWeekList() {
+      renderDayList() {
         const week_arr = ['一', '二', '三', '四', '五', '六', '日'];
         const start = new Date(this.start + 'T00:00:00').getTime();
         const length = 7 * (this.current - 1);
