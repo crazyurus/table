@@ -4,7 +4,7 @@
 }
 
 a {
-    color: #45c8dc;
+    color: #45c8dc !important;
 }
 
 .layui-m-layershade {
@@ -48,15 +48,18 @@ a {
     line-height: 0.3rem !important;
 }
 
-.floating-button {
-    background: #45c8dc;
+.fab {
     bottom: 2rem !important;
     z-index: 1500;
+}
+
+.fab > a {
+    background: #45c8dc !important;
     box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
 }
 
-.floating-button.active-state {
-    background: rgb(128, 213, 234);
+.fab > a:focus {
+    background: rgb(128, 213, 234) !important;
 }
 
 i.icon.icon-plus {

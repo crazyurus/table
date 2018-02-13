@@ -27,7 +27,7 @@
         course.period.section = this.no + 1;
 
         this.$store.commit('current', course);
-        this.$f7.popup('.popup-course');
+        this.$f7.popup.open('.popup-course');
       },
       showCourseList() {
         const self = this;
@@ -51,7 +51,7 @@
             color: 'red'
           }];
           const groups = [buttons.concat(courses), cancel];
-          this.$f7.actions(groups);
+          this.$f7.actions.create(groups);
         }
       },
       showCourseDetail(course) {

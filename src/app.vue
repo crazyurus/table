@@ -1,26 +1,20 @@
 <template>
   <div id="app">
-    <f7-views>
-      <f7-view main>
-        <f7-pages>
-          <f7-page>
-            <token-table :week="$store.state.week" :course="$store.state.course" :start="$store.state.start" @change-title="changeTitle"></token-table>
-            <f7-fab @click="showPopup">
-              <f7-icon icon="icon-plus"></f7-icon>
-            </f7-fab>
-          </f7-page>
-        </f7-pages>
-      </f7-view>
-    </f7-views>
+    <f7-view main>
+      <f7-page>
+        <token-table :week="$store.state.week" :course="$store.state.course" :start="$store.state.start" @change-title="changeTitle"></token-table>
+        <f7-fab @click="showPopup" color="custom">
+          <f7-icon icon="icon-plus"></f7-icon>
+        </f7-fab>
+      </f7-page>
+    </f7-view>
 
     <!-- 添加自定义课程 -->
     <f7-popup class="popup-course">
       <f7-view>
-        <f7-pages>
-          <f7-page>
-            <token-form :current="$store.state.current"></token-form>
-          </f7-page>
-        </f7-pages>
+        <f7-page>
+          <token-form :current="$store.state.current"></token-form>
+        </f7-page>
       </f7-view>
     </f7-popup>
   </div>
@@ -47,7 +41,7 @@
     methods: {
       showPopup() {
         this.$store.commit('current', new Course());
-        this.$f7.popup('.popup-course');
+        this.$f7.popup.open('.popup-course');
       },
       changeTitle(week) {
         if (week < 1) document.title = '放假中';

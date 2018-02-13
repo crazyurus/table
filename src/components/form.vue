@@ -86,7 +86,7 @@
           this.$http.post('/table/course/edit', {
             course: this.course
           }).catch(() => {
-            this.$f7.alert('网络请求错误');
+            this.$f7.dialog.alert('网络请求错误');
           });
           this.$store.commit('edit', this.course);
         }
@@ -98,24 +98,24 @@
             this.course.id = result.data.data;
             this.$store.commit('add', this.course);
           }).catch(() => {
-            this.$f7.alert('网络请求错误');
-          });;
+            this.$f7.dialog.alert('网络请求错误');
+          });
         }
         this.closePopup();
       },
       deleteCourse() {
-        this.$f7.confirm('确定要删除课程 <b>' + this.course.name + '</b> 吗？', () => {
+        this.$f7.dialog.confirm('确定要删除课程 <b>' + this.course.name + '</b> 吗？', () => {
           this.$http.post('/table/course/delete', {
             id: this.course.id
           }).catch(() => {
-            this.$f7.alert('网络请求错误');
+            this.$f7.dialog.alert('网络请求错误');
           });
           this.$store.commit('delete');
           this.closePopup();
         });
       },
       closePopup() {
-        this.$f7.closeModal('.popup-course');
+        this.$f7.popup.close('.popup-course');
       },
       clone(obj) {
         return JSON.parse(JSON.stringify(obj));
