@@ -15,7 +15,7 @@
       <tr>
         <th v-for="item in renderDayList" :class="{ current: item.current }">
           <p>周{{item.week}}</p>
-          <p v-if="item.day">{{item.day}}日</p>
+          <p v-if="item.day">{{item.month}}-{{item.day}}</p>
         </th>
       </tr>
       </thead>
@@ -67,6 +67,7 @@
           let day = new Date(start + (length + index) * 24 * 3600 * 1000);
           return {
             week: item,
+            month: day.getMonth() + 1,
             day: day.getDate(),
             current: day.toDateString() === current.toDateString()
           }
