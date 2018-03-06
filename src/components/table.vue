@@ -224,11 +224,11 @@
   .table-item-5 {
     background-color: rgb(80,210,194);
   }
-  .table-item-6 {
-    background-color: rgb(255,51,102);
-  }
   .table-item-0 {
     background-color: rgb(0,185,255);
+  }
+  .table-item-7 {
+    background-color: rgb(255,51,102);
   }
   .table-item-null, .table-item-invalid {
     background-color: rgb(242,244,244);
