@@ -3,7 +3,7 @@
     <div class="table-time">
       <div class="table-time-blank">
         <select v-model="current" title="切换周数">
-          <option v-for="i in 24" :value="i">第{{i}}周</option>
+          <option v-for="i in 24" :value="i">第{{i}}周{{i === week ? '(本周)' : ''}}</option>
         </select>
       </div>
       <div class="table-time-morning">上<br>午</div>
@@ -79,7 +79,6 @@
           let valid = false;
           if (item.time.start <= this.current && this.current <= item.time.end) {
             valid = true;
-            // 单双周判断
             if (item.time.odd === '单' && this.current % 2 === 0) valid = false;
             else if (item.time.odd === '双' && this.current % 2 === 1) valid = false;
           }

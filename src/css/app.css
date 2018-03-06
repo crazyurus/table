@@ -26,28 +26,6 @@ a {
     padding: 20px 30px !important;
 }
 
-.course-title {
-    font-size: 0.85rem;
-    color: #bbb;
-    margin: 0.5rem 0;
-}
-
-.course-content, .course-footer {
-    font-size: 1.1rem;
-    color: #000;
-    margin: 0.5rem 0;
-}
-
-.course-footer {
-    text-align: center;
-    margin: 2rem 0.5rem -0.3rem;
-}
-
-.course-divide {
-    margin: 0;
-    line-height: 0.3rem !important;
-}
-
 .floating-button {
     background: #45c8dc;
     bottom: 2rem !important;
