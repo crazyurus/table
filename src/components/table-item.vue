@@ -16,8 +16,8 @@
     props: ['course', 'week', 'no'],
     computed: {
       color() {
-        if (this.course[0].valid) return this.week + 1;
-        else return 'invalid';
+        if (this.course[0].color === 0) return 'invalid';
+        else return this.course[0].color % 7;
       }
     },
     methods: {

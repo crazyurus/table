@@ -74,27 +74,31 @@
         });
       },
       renderCourseList() {
-        // 分析是否在当前周
+        let colorList = new Map();
         let courseList = this.course.map(item => {
+          // 分析是否在当前周
           let valid = false;
           if (item.time.start <= this.current && this.current <= item.time.end) {
             valid = true;
-            // 单双周判断
             if (item.time.odd === '单' && this.current % 2 === 0) valid = false;
             else if (item.time.odd === '双' && this.current % 2 === 1) valid = false;
           }
 
+          // 计算课程颜色
+          const length = colorList.size + 1;
+          if (valid && !colorList.has(item.name)) colorList.set(item.name, length);
+
           return {
             ...item,
-            valid: valid,
-            origin: item
+            origin: item,
+            color: valid ? colorList.get(item.name) : 0
           }
         });
 
         // 按照valid排序
         courseList.sort((a, b) => {
-          if (a.valid === b.valid) return 0;
-          return a.valid ? -1 : 1;
+          if (a.color === b.color) return 0;
+          return a.color < b.color ? -1 : 1;
         });
 
         // 初始化课程表（5*7）
@@ -222,7 +226,7 @@
   .table-item-6 {
     background-color: rgb(255,51,102);
   }
-  .table-item-7 {
+  .table-item-0 {
     background-color: rgb(0,185,255);
   }
   .table-item-null, .table-item-invalid {
