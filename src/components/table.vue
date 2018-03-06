@@ -154,6 +154,7 @@
     width: 2rem;
     height: 100%;
     background: #fff;
+    z-index: 99;
   }
   .table-time-morning, .table-time-afternoon {
     height: calc(40% - 18.8px);
