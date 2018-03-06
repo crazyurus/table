@@ -63,6 +63,13 @@
           }
         });
 
+        // 监听返回键
+        location.href = '#detail';
+        window.onhashchange = () => {
+          if (location.hash === '') this.$layer.close();
+        };
+
+        // 打开弹窗
         this.$store.commit('current', course.origin);
         this.$layer.open({
           title: course.name,
