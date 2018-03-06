@@ -20,7 +20,7 @@
     props: ['course'],
     computed: {
       timeStr() {
-        const valid = this.course.color === 0 ? '（非本周）' : '';
+        const valid = this.course.valid ? '' : '（非本周）';
         if (this.course.time.start === this.course.time.end) return '第' + this.course.time.start + '周' + valid;
         else return '第' + this.course.time.start + '-' + this.course.time.end + this.course.time.odd + '周' + valid;
       }

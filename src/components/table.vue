@@ -86,19 +86,20 @@
 
           // 计算课程颜色
           const length = colorList.size + 1;
-          if (valid && !colorList.has(item.name)) colorList.set(item.name, length);
+          if (!colorList.has(item.name)) colorList.set(item.name, length);
 
           return {
             ...item,
+            valid,
             origin: item,
-            color: valid ? colorList.get(item.name) : 0
+            color: colorList.get(item.name)
           }
         });
 
         // 按照valid排序
         courseList.sort((a, b) => {
-          if (a.color === b.color) return 0;
-          return a.color < b.color ? -1 : 1;
+          if (a.valid === b.valid) return 0;
+          return a.valid ? -1 : 1;
         });
 
         // 初始化课程表（5*7）
