@@ -37,14 +37,19 @@
       'token-form': Form
     },
     mounted() {
+      const storage = localStorage.getItem('course');
+      if (storage) this.updateTable(JSON.parse(storage));
       this.$http.get('/table/index/api').then(response => {
         const data = response.data.data;
-
-        this.changeTitle(data.week);
-        this.$store.commit('init', data);
+        localStorage.setItem('course', JSON.stringify(data));
+        this.updateTable(data);
       });
     },
     methods: {
+      updateTable(data) {
+        this.changeTitle(data.week);
+        this.$store.commit('init', data);
+      },
       showPopup() {
         this.$store.commit('current', new Course());
         this.$f7.popup('.popup-course');
