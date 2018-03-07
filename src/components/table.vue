@@ -3,7 +3,7 @@
     <div class="table-time">
       <div class="table-time-blank">
         <select v-model="current" title="切换周数">
-          <option v-for="i in 24" :value="i">第{{i}}周</option>
+          <option v-for="i in 24" :value="i">第{{i}}周{{i === week ? '(本周)' : ''}}</option>
         </select>
       </div>
       <div class="table-time-morning">上<br>午</div>
