@@ -19,6 +19,7 @@ a {
     background: rgb(29, 170, 240);
     color: #fff;
     margin: 0;
+    font-size: 1rem;
 }
 
 .layui-m-layercont {
