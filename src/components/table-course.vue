@@ -9,7 +9,7 @@
         <p class="course-title">建议反馈</p>
         <p class="course-content">Token团队</p>
         <p class="course-divide">&nbsp;</p>
-        <p v-if="course.id > 0"><a href="javascript: f7.popup('.popup-course'); document.querySelector('.layui-m-layer').remove();">编辑自定义课程</a></p>
+        <p v-if="course.id > 0"><a href="javascript: window.editCourse()">编辑自定义课程</a></p>
         <p class="course-footer">{{course.classroom}}</p>
     </div>
 </template>

@@ -63,10 +63,20 @@
           }
         });
 
+        // 背景模糊
+        let $main = document.querySelector('.view-main');
+        document.addEventListener('click', (e) => {
+          if (e.target.className === 'layui-m-layershade active-state') $main.style.filter = '';
+        }, true);
+        $main.style.filter = 'blur(5px)';
+
         // 监听返回键
         location.href = '#detail';
         window.onhashchange = () => {
-          if (location.hash === '') this.$layer.close();
+          if (location.hash === '') {
+            this.$layer.close();
+            $main.style.filter = '';
+          }
         };
 
         // 打开弹窗

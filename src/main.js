@@ -31,3 +31,9 @@ new Vue({
   store,
   render: h => h(App)
 });
+
+window.editCourse = function () {
+  f7.popup('.popup-course');
+  document.querySelector('.layui-m-layer').remove();
+  document.querySelector('.view-main').style.filter = '';
+}
