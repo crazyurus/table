@@ -68,7 +68,7 @@
         document.addEventListener('click', (e) => {
           if (e.target.className === 'layui-m-layershade active-state') $main.style.filter = '';
         }, true);
-        $main.style.filter = 'blur(5px)';
+        $main.style.filter = 'blur(4px)';
 
         // 监听返回键
         location.href = '#detail';
