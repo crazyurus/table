@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100%;">
+  <div class="table">
     <div class="table-time">
       <div class="table-time-blank">
         <select v-model="current" title="切换周数">
@@ -116,6 +116,9 @@
 </script>
 
 <style scoped>
+  .table {
+    height: 100%;
+  }
   .table-course {
     position: absolute;
     top: 0;
