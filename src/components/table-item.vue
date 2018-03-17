@@ -1,6 +1,6 @@
 <template>
     <div v-if="course.length === 0" class="table-item table-item-null" @click="addCourse"></div>
-    <div v-else class="table-item" :class="'table-item-' + color" @click="showCourseList">
+    <div v-else class="table-item" :class="'table-item-' + color + (course.length > 1 ? ' table-item-multi' : '')" @click="showCourseList">
         <div>{{course[0].name}}</div>
         <div v-if="course[0].classroom">{{course[0].classroom}}</div>
     </div>
@@ -21,13 +21,21 @@
       }
     },
     methods: {
-      addCourse() {
-        let course = new Course();
-        course.period.week = this.week + 1;
-        course.period.section = this.no + 1;
+      addCourse(e) {
+        const el = e.target;
+        const name = 'table-item-add';
+        if (el.className.indexOf(name) > -1) {
+          let course = new Course();
+          course.period.week = this.week + 1;
+          course.period.section = this.no + 1;
 
-        this.$store.commit('current', course);
-        this.$f7.popup('.popup-course');
+          this.$store.commit('current', course);
+          this.$f7.popup('.popup-course');
+          setTimeout(() => {
+            el.className = el.className.replace(name, '');
+          }, 800);
+        }
+        else el.className += ' ' + name;
       },
       showCourseList() {
         const self = this;
@@ -35,7 +43,7 @@
         if (this.course.length === 1) this.showCourseDetail(this.course[0]);
         else {
           let buttons = [{
-            text: '该节次对应多门课程',
+            text: '该节次对应' + this.course.length + '门课程',
             label: true
           }];
           let courses = this.course.map(item => {

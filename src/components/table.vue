@@ -205,6 +205,7 @@
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    position: relative;
   }
   .table-item-1 {
     background-color: rgb(69,200,220);
@@ -229,6 +230,26 @@
   }
   .table-item-null, .table-item-invalid {
     background-color: rgb(242,244,244);
+  }
+  .table-item-add {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D'%23CCCCCC'%20height%3D'24'%20viewBox%3D'0%200%2024%2024'%20width%3D'24'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'M19%2013h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'%2F%3E%3Cpath%20d%3D'M0%200h24v24H0z'%20fill%3D'none'%2F%3E%3C%2Fsvg%3E");
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .table-item-multi::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 0.3rem solid transparent;
+    border-right-color: rgb(242, 244, 244);
+    border-bottom-color: rgb(242, 244, 244);
+    background-color: rgba(242,244,244,0.6);
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0.15rem;
   }
   .table-item-invalid {
     color: #666;
