@@ -2,7 +2,7 @@
     <div v-if="course.length === 0" class="table-item table-item-null" @click="addCourse"></div>
     <div v-else class="table-item" :class="'table-item-' + color + (course.length > 1 ? ' table-item-multi' : '')" @click="showCourseList">
         <div>{{course[0].name}}</div>
-        <div v-if="course[0].classroom">{{course[0].classroom}}</div>
+        <div v-if="course[0].classroom" class="room">{{course[0].classroom}}</div>
     </div>
 </template>
 
@@ -98,3 +98,11 @@
     }
   }
 </script>
+
+<style scoped>
+  .room {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

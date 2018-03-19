@@ -1,5 +1,8 @@
 .page-content {
     background-color: #fff;
+}
+
+.page-content[data-page=table] {
     overflow-y: hidden;
 }
 

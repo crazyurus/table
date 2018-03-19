@@ -172,7 +172,7 @@
   .table-course th, .table-time {
     font-weight: 300;
     padding: 0;
-    font-size: 0.8rem;
+    font-size: 10px;
   }
   .table-course th {
     padding: 0.2rem 0;
@@ -199,13 +199,33 @@
     height: calc(100% - 0.24rem);
     color: #fff;
     border-radius: 0.25rem;
-    font-size: 0.8rem;
+    font-size: 10px;
     padding: 0.3rem 0.3rem 0.1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     position: relative;
+  }
+  @media screen and (max-width: 320px) {
+    .table-item, .table-course th, .table-time {
+      font-size: 10px;
+    }
+  }
+  @media screen and (min-width: 321px) and (max-width: 375px) {
+    .table-item, .table-course th, .table-time {
+      font-size: 11px;
+    }
+  }
+  @media screen and (min-width: 376px) and (max-width: 413px) {
+    .table-item, .table-course th, .table-time {
+      font-size: 12px;
+    }
+  }
+  @media screen and (min-width: 414px) {
+    .table-item, .table-course th, .table-time {
+      font-size: 13px;
+    }
   }
   .table-item-1 {
     background-color: rgb(69,200,220);

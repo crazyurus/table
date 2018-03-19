@@ -3,7 +3,7 @@
     <f7-views>
       <f7-view main>
         <f7-pages>
-          <f7-page>
+          <f7-page name="table">
             <token-table :week="$store.state.week" :course="$store.state.course" :start="$store.state.start" @change-title="changeTitle"></token-table>
             <f7-fab @click="showPopup">
               <f7-icon icon="icon-plus"></f7-icon>
