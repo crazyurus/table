@@ -158,6 +158,9 @@
     background: #fff;
     z-index: 99;
   }
+  .ios .table-time {
+    position: absolute;
+  }
   .table-time-morning, .table-time-afternoon {
     height: calc(40% - 18.8px);
   }

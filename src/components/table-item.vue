@@ -73,8 +73,11 @@
 
         // 背景模糊
         let $main = document.querySelector('.view-main');
-        document.addEventListener('click', (e) => {
-          if (e.target.className === 'layui-m-layershade active-state') $main.style.filter = '';
+        document.addEventListener('click', e => {
+          if (e.target.className === 'layui-m-layershade active-state') {
+            $main.style.filter = '';
+            if (location.hash === '#detail') history.back();
+          }
         }, true);
         $main.style.filter = 'blur(4px)';
 
