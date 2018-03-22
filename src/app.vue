@@ -38,7 +38,7 @@
     },
     mounted() {
       const storage = localStorage.getItem('course');
-      if (storage) this.updateTable(JSON.parse(storage));
+      if (storage && storage !== 'undefined') this.updateTable(JSON.parse(storage));
       this.$http.get('/table/index/api').then(response => {
         const data = response.data.data;
         localStorage.setItem('course', JSON.stringify(data));
