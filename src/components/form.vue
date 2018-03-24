@@ -15,12 +15,15 @@
             <f7-input type="text" placeholder="如：新1-101" v-model.trim="course.classroom" />
         </f7-list-item>
         <f7-list-item>
-            <f7-label>开始周</f7-label>
-            <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course.time.start" />
-        </f7-list-item>
-        <f7-list-item>
-            <f7-label>结束周</f7-label>
-            <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course.time.end" />
+            <f7-label>周数</f7-label>
+          <f7-input type="select" required v-model="course.time.start">
+            <option value="" disabled>起始周</option>
+            <option v-for="i in 25" :value="i">第{{i}}周</option>
+          </f7-input>
+          <f7-input type="select" required v-model="course.time.end">
+            <option value="" disabled>结束周</option>
+            <option v-for="i in calcWeek" :value="i">第{{i}}周</option>
+          </f7-input>
         </f7-list-item>
         <f7-list-item>
             <f7-label>单双周</f7-label>
@@ -31,7 +34,7 @@
             </f7-buttons>
         </f7-list-item>
         <f7-list-item>
-            <f7-label>上课周次</f7-label>
+            <f7-label>星期</f7-label>
             <f7-input type="select" required v-model="course.period.week">
                 <option value="0">请选择</option>
                 <option value="1">星期一</option>
@@ -44,7 +47,7 @@
             </f7-input>
         </f7-list-item>
         <f7-list-item>
-            <f7-label>上课节次</f7-label>
+            <f7-label>节次</f7-label>
             <f7-input type="select" required v-model="course.period.section">
                 <option value="0">请选择</option>
                 <option value="1">第一大节（8:00-9:40）</option>
@@ -55,7 +58,7 @@
             </f7-input>
         </f7-list-item>
         <div class="button-area">
-            <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse" :disabled="!course.name || !course.classroom">{{course.id ? '保存' : '添加'}}</f7-button>
+            <f7-button type="submit" class="btn-primary button-big button-fill" @click="addCourse" :disabled="!course.name || !course.classroom || !course.time.start || !course.time.end || !course.period.week || !course.period.section">{{course.id ? '保存' : '添加'}}</f7-button>
             <f7-button v-if="course.id" class="btn-danger button-big button-fill" @click="deleteCourse">删除</f7-button>
             <f7-button class="btn-default button-big button-fill close-popup">关闭</f7-button>
         </div>
@@ -77,6 +80,15 @@
     watch: {
       current() {
         this.course = this.clone(this.current);
+      }
+    },
+    computed: {
+      calcWeek() {
+        let arr = [];
+        for (let i = this.course.time.start; i <= 25; ++i) {
+          arr.push(i);
+        }
+        return arr;
       }
     },
     methods: {

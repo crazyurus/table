@@ -1,7 +1,7 @@
 <template>
     <div>
         <p class="course-title">授课教师</p>
-        <p class="course-content">{{course.teacher.name}}</p>
+        <p class="course-content">{{course.teacher.name ? course.teacher.name : '暂无'}}</p>
         <p class="course-divide">&nbsp;</p>
         <p class="course-title">授课时间</p>
         <p class="course-content">{{timeStr}}</p>
