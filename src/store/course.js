@@ -24,7 +24,7 @@ export default new Vuex.Store({
     edit(state, course) {
       const current = state.current;
       for (let key in course) {
-        if (typeof course[key] === 'object') Object.assign(current[key], course[key]);
+        if (course[key] !== null && typeof course[key] === 'object') Object.assign(current[key], course[key]);
         else current[key] = course[key];
       }
     },

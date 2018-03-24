@@ -47,7 +47,7 @@
         }
       },
       {
-        "id": 0,
+        "id": 1,
         "kch": null,
         "name": "\u9a6c\u514b\u601d\u4e3b\u4e49\u57fa\u672c\u539f\u7406",
         "classroom": "\u65b01-405",
@@ -327,7 +327,7 @@
         }
       },
       {
-        "id": 0,
+        "id": 1,
         "kch": null,
         "name": "\u6f14\u8bb2\u4e0e\u5199\u4f5c",
         "classroom": "\u65b04-304",
@@ -427,7 +427,7 @@
         }
       },
       {
-        "id": 1,
+        "id": 0,
         "kch": null,
         "name": "\u7cfb\u7edf\u8f6f\u4ef6\u5e94\u7528\u7efc\u5408\u5b9e\u9a8c",
         "classroom": "\u8ba1\u9a6c\u5b9e\u9a8c1",

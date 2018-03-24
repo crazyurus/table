@@ -23,12 +23,12 @@
             <f7-input type="tel" maxlength="2" placeholder="请输入数字" required v-model="course.time.end" />
         </f7-list-item>
         <f7-list-item>
-            <f7-label>是否区分单双周</f7-label>
-            <f7-input type="select" required v-model="course.time.odd">
-                <option value="">不区分</option>
-                <option value="单">仅单周</option>
-                <option value="双">仅双周</option>
-            </f7-input>
+            <f7-label>单双周</f7-label>
+            <f7-buttons>
+                <f7-button :active="course.time.odd === ''" @click="changeOdd('')">不区分</f7-button>
+                <f7-button :active="course.time.odd === '单'" @click="changeOdd('单')">单周</f7-button>
+                <f7-button :active="course.time.odd === '双'" @click="changeOdd('双')">双周</f7-button>
+            </f7-buttons>
         </f7-list-item>
         <f7-list-item>
             <f7-label>上课周次</f7-label>
@@ -81,7 +81,6 @@
     },
     methods: {
       addCourse() {
-        if (this.course.time.odd === undefined) this.course.time.odd = '';
         if (this.course.id) {
           this.$http.post('/table/course/edit', {
             course: this.course
@@ -99,7 +98,7 @@
             this.$store.commit('add', this.course);
           }).catch(() => {
             this.$f7.alert('网络请求错误');
-          });;
+          });
         }
         this.closePopup();
       },
@@ -113,6 +112,9 @@
           this.$store.commit('delete');
           this.closePopup();
         });
+      },
+      changeOdd(odd) {
+        this.course.time.odd = odd;
       },
       closePopup() {
         this.$f7.closeModal('.popup-course');
@@ -151,5 +153,17 @@
   }
   .ios .btn-default {
     border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+  }
+  .buttons-row {
+    width: 200px;
+  }
+  .buttons-row > .button.active {
+    background: #45c8dc;
+    color: #fff;
+  }
+
+  .buttons-row > .button {
+    border-color: #45c8dc;
+    color: #45c8dc;
   }
 </style>
