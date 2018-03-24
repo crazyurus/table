@@ -18,11 +18,11 @@
             <f7-label>周数</f7-label>
           <f7-input type="select" required v-model="course.time.start">
             <option value="" disabled>起始周</option>
-            <option v-for="i in 25" :value="i">第{{i}}周</option>
+            <option v-for="i in 25" :value="i" :key="i">第{{i}}周</option>
           </f7-input>
           <f7-input type="select" required v-model="course.time.end">
             <option value="" disabled>结束周</option>
-            <option v-for="i in calcWeek" :value="i">第{{i}}周</option>
+            <option v-for="i in calcWeek" :value="i" :key="i">第{{i}}周</option>
           </f7-input>
         </f7-list-item>
         <f7-list-item>
@@ -84,6 +84,7 @@
     },
     computed: {
       calcWeek() {
+        if (!this.course.time.start) return 25;
         let arr = [];
         for (let i = this.course.time.start; i <= 25; ++i) {
           arr.push(i);
@@ -93,6 +94,7 @@
     },
     methods: {
       addCourse() {
+        if (this.course.time.start > this.course.time.end) return;
         if (this.course.id) {
           this.$http.post('/table/course/edit', {
             course: this.course
