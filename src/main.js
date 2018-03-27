@@ -14,6 +14,9 @@ import axios from 'axios'
 import layer from 'vue-layer-mobile'
 import store from './store/course'
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
+
 Vue.use(Framework7Vue)
 Vue.use(layer)
 Vue.prototype.$http = axios
