@@ -9,7 +9,8 @@ export default new Vuex.Store({
     week: 0,
     current: {},
     term: '',
-    start: ''
+    start: '',
+    sno: ''
   },
   mutations: {
     init(state, response) {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
       state.week = response.week;
       state.start = response.start;
       state.term = response.term;
+    },
+    user(state, sno) {
+      state.sno = sno;
     },
     add(state, course) {
       state.course.push(course);
