@@ -56,7 +56,7 @@
       },
       changeTitle(week) {
         if (week < 1) document.title = '放假中';
-        else document.title = '第' + week + '周';
+        else document.title = '第 ' + week + ' 周';
         if (window.token && token.changeTitle) token.changeTitle(document.title);
       }
     }

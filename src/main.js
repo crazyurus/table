@@ -20,7 +20,7 @@ OfflinePluginRuntime.install();
 Vue.use(Framework7Vue)
 Vue.use(layer)
 Vue.prototype.$http = axios
-Vue.prototype.$user = { sno: window.sno };
+Vue.prototype.$user = { sno: '' };
 if (process.env.NODE_ENV !== 'production') require('../mock.js')
 
 new Vue({
@@ -36,7 +36,7 @@ new Vue({
   render: h => h(App)
 });
 
-store.commit('user', window.sno);
+store.commit('user', '');
 window.editCourse = function () {
   f7.popup('.popup-course');
   document.querySelector('.layui-m-layer').remove();

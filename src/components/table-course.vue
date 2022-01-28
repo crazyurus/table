@@ -1,14 +1,13 @@
 <template>
     <div>
         <p class="course-title">授课教师</p>
-        <p class="course-content" v-if="course.id > 0 || $store.state.sno.length < 7">{{course.teacher.name ? course.teacher.name : '暂无'}}</p>
-        <p class="course-content course-link" v-else onclick="token.loadUrl('https://web.wutnews.net/table/index/teacher?sno=' + this.getAttribute('sno').replace(/^0+/g, ''))" :sno="course.teacher.sno">{{course.teacher.name}}</p>
+        <p class="course-content">{{course.teacher.name ? course.teacher.name : '暂无'}}</p>
         <p class="course-divide">&nbsp;</p>
         <p class="course-title">授课时间</p>
         <p class="course-content">{{timeStr}}</p>
         <p class="course-divide">&nbsp;</p>
         <p class="course-title">建议反馈</p>
-        <p class="course-content">Token团队</p>
+        <p class="course-content">Token 团队</p>
         <p class="course-divide">&nbsp;</p>
         <p v-if="course.id > 0"><a href="javascript: window.editCourse()">编辑自定义课程</a></p>
         <p class="course-footer">{{course.classroom}}</p>
