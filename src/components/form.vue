@@ -96,7 +96,7 @@
       addCourse() {
         if (this.course.time.start > this.course.time.end) return;
         if (this.course.id) {
-          this.$http.post('/table/course/edit', {
+          this.$http.get('/table/course/edit.json', {
             course: this.course
           }).catch(() => {
             this.$f7.alert('网络请求错误');
@@ -104,11 +104,11 @@
           this.$store.commit('edit', this.course);
         }
         else {
-          this.$http.post('/table/course/add', {
+          this.$http.get('/table/course/add.json', {
             course: this.course,
             term: this.$store.state.term
           }).then(result => {
-            this.course.id = result.data.data;
+            this.course.id = result.data.data.id;
             this.$store.commit('add', this.course);
           }).catch(() => {
             this.$f7.alert('网络请求错误');
@@ -118,7 +118,7 @@
       },
       deleteCourse() {
         this.$f7.confirm('确定要删除课程 <b>' + this.course.name + '</b> 吗？', () => {
-          this.$http.post('/table/course/delete', {
+          this.$http.get('/table/course/delete.json', {
             id: this.course.id
           }).catch(() => {
             this.$f7.alert('网络请求错误');
