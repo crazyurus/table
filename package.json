@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Course Table by Framework7 Vue + Webpack",
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "start": "node build/dev-server.js",
     "build": "node build/build.js"
   },
   "repository": {
@@ -26,7 +26,6 @@
   "bugs": {
     "url": "https://git.wutnews.net/crazyurus/table/issues"
   },
-  "homepage": "https://web.wutnews.net/table",
   "dependencies": {
     "axios": "^0.17.1",
     "framework7": "^1.0.0",

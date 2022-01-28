@@ -1,18 +1,14 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7f43140f-0a58-409d-a365-f49709514467/deploy-status)](https://app.netlify.com/sites/whut-table/deploys)
+
 # 课程表
 
-Vue + Vuex + Framework7 + Webpack 
+掌上理工大课程表模块
 
 ## 安装
 
 ``` bash
-# install dependencies
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+npm run start
 ```
 
 ## 目录结构
