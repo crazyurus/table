@@ -1,8 +1,10 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7f43140f-0a58-409d-a365-f49709514467/deploy-status)](https://app.netlify.com/sites/whut-table/deploys)
-
 # 课程表
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7f43140f-0a58-409d-a365-f49709514467/deploy-status)](https://app.netlify.com/sites/whut-table/deploys)
+
 掌上理工大课程表模块
+
+`Vue` + `Vuex` + `Framework7`
 
 ## 安装
 
