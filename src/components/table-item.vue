@@ -8,7 +8,7 @@
 
 <script>
   import Vue from 'vue'
-  import Detail from './table-course'
+  import Detail from './table-course.vue'
   import Course from '../course.js'
 
   export default {

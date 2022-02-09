@@ -1,3 +1,4 @@
+import './mock'
 import Vue from 'vue'
 
 import Framework7 from 'framework7'
@@ -8,20 +9,16 @@ import Framework7ThemeColors from 'framework7/dist/css/framework7.ios.colors.min
 import 'vue-layer-mobile/need/layer.css'
 import './css/app.css'
 import './css/layer.css'
-import App from './app'
+import App from './app.vue'
 
 import axios from 'axios'
 import layer from 'vue-layer-mobile'
 import store from './store/course'
 
-import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-OfflinePluginRuntime.install();
-
 Vue.use(Framework7Vue)
 Vue.use(layer)
 Vue.prototype.$http = axios
-Vue.prototype.$user = { sno: '' };
-if (process.env.NODE_ENV !== 'production') require('../mock.js')
+Vue.prototype.$user = { sno: '1049721601499' }
 
 new Vue({
   el: '#app',
@@ -34,12 +31,12 @@ new Vue({
   },
   store,
   render: h => h(App)
-});
+})
 
-store.commit('user', '');
+store.commit('user', '')
 window.editCourse = function () {
-  f7.popup('.popup-course');
-  document.querySelector('.layui-m-layer').remove();
-  document.querySelector('.view-main').style.filter = '';
-  if (location.hash === '#detail') history.back();
+  f7.popup('.popup-course')
+  document.querySelector('.layui-m-layer').remove()
+  document.querySelector('.view-main').style.filter = ''
+  if (location.hash === '#detail') history.back()
 }

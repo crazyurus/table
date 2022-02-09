@@ -27,8 +27,8 @@
 </template>
 
 <script>
-  import Table from './components/table'
-  import Form from './components/form'
+  import Table from './components/table.vue'
+  import Form from './components/form.vue'
   import Course from './course.js'
 
   export default {

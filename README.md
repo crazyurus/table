@@ -4,13 +4,16 @@
 
 掌上理工大课程表模块
 
-`Vue` + `Vuex` + `Framework7`
+`Vue` + `Vuex` + `Framework7` + `Vite`
 
 ## 安装
 
 ``` bash
 npm install
+
 npm run start
+
+npm run build
 ```
 
 ## 目录结构

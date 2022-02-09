@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import Item from './table-item'
+  import Item from './table-item.vue'
 
   export default {
     name: 'token-table',
