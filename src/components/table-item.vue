@@ -43,7 +43,7 @@
         if (this.course.length === 1) this.showCourseDetail(this.course[0]);
         else {
           let buttons = [{
-            text: '该节次对应' + this.course.length + '门课程',
+            text: '该节次对应 ' + this.course.length + ' 门课程',
             label: true
           }];
           let courses = this.course.map(item => {
