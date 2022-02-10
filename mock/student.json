@@ -15,7 +15,7 @@
           "name": "\u5f20\u4f1f",
           "sno": "7668"
         },
-        "point": 0,
+        "point": 2.5,
         "time": {
           "start": 1,
           "end": 12,
@@ -35,7 +35,7 @@
           "name": "\u90d1\u4f1f",
           "sno": "10802"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 14,
@@ -55,7 +55,7 @@
           "name": "\u90d1\u4f1f",
           "sno": "10802"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 14,
@@ -75,7 +75,7 @@
           "name": "\u5468\u4fca\u4f1f",
           "sno": "10696"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 10,
@@ -95,7 +95,7 @@
           "name": "\u9648\u660e\u4fca",
           "sno": "457"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -115,7 +115,7 @@
           "name": "\u5f20\u534e\u4f1f",
           "sno": "7800"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -135,7 +135,7 @@
           "name": "\u5f20\u534e\u4f1f",
           "sno": "7800"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -155,7 +155,7 @@
           "name": "\u738b\u4e91\u534e",
           "sno": "9676"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -175,7 +175,7 @@
           "name": "\u738b\u4e91\u534e",
           "sno": "9676"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 12,
           "end": 12,
@@ -195,7 +195,7 @@
           "name": "\u738b\u4e91\u534e",
           "sno": "9676"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -215,7 +215,7 @@
           "name": "\u5f6d\u9759",
           "sno": "10917"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -235,7 +235,7 @@
           "name": "\u674e\u5b81",
           "sno": "8856"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 12,
@@ -255,7 +255,7 @@
           "name": "\u7530\u749f",
           "sno": "10644"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 14,
           "end": 17,
@@ -275,7 +275,7 @@
           "name": "\u7530\u749f",
           "sno": "10644"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 14,
           "end": 17,
@@ -295,7 +295,7 @@
           "name": "\u9f9a\u6587\u8389",
           "sno": "1404"
         },
-        "point": 0,
+        "point": 2.5,
         "time": {
           "start": 1,
           "end": 11,
@@ -315,7 +315,7 @@
           "name": "\u7941\u660e\u9f99",
           "sno": "8807"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 12,
@@ -335,7 +335,7 @@
           "name": "\u9ec4\u7ea2\u971e",
           "sno": "2048"
         },
-        "point": 0,
+        "point": 1,
         "time": {
           "start": 1,
           "end": 16,
@@ -355,7 +355,7 @@
           "name": "\u9ec4\u7ea2\u971e",
           "sno": "2048"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 16,
@@ -375,7 +375,7 @@
           "name": "\u5f6d\u9759",
           "sno": "10917"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 8,
@@ -395,7 +395,7 @@
           "name": "\u5f6d\u9759",
           "sno": "10917"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 1,
           "end": 8,
@@ -415,7 +415,7 @@
           "name": "\u89e3\u5e86",
           "sno": "10879"
         },
-        "point": 0,
+        "point": 2,
         "time": {
           "start": 10,
           "end": 17,
@@ -435,7 +435,7 @@
           "name": "\u89e3\u5e86",
           "sno": "10879"
         },
-        "point": 0,
+        "point": 3,
         "time": {
           "start": 10,
           "end": 17,
