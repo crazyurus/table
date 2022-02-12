@@ -10,23 +10,18 @@
       <div class="table-time-afternoon">下<br>午</div>
       <div class="table-time-evening">晚<br>上</div>
     </div>
-    <table class="table-course">
-      <thead class="table-border">
-      <tr>
-        <th v-for="item in renderDayList" :class="{ current: item.current }">
-          <p>周{{item.week}}</p>
-          <p v-if="item.day">{{item.month}}-{{item.day}}</p>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(line, index) in renderCourseList" :class="{ 'table-border': index == 1 || index == 3 }">
-        <td v-for="(item, week) in line">
+    <div class="table-course">
+      <div v-for="item in renderDayList" :class="{ current: item.current, 'head-item': true }">
+        <p>周{{item.week}}</p>
+        <p v-if="item.day">{{item.month}}-{{item.day}}</p>
+      </div>
+      <template v-for="(line, index) in renderCourseList">
+        <div v-if="index == 2 || index == 4" class="border-item" />
+        <div v-for="(item, week) in line">
           <token-table-item :course="item" :week="week" :no="index"></token-table-item>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -117,21 +112,19 @@
 
 <style scoped>
   .table {
+    display: flex;
     height: 100%;
+    width: 100%;
   }
   .table-course {
-    position: absolute;
-    top: 0;
-    left: 2rem;
-    height: 100%;
-    width: calc(140% - 3rem);
-    table-layout: fixed;
+    display: grid;
+    grid-template-columns: repeat(7, calc(20% - 2px));
+    grid-template-rows: 47px repeat(2, 1fr) 1px repeat(2, 1fr) 1px 1fr;
+    grid-row-gap: 2px;
+    grid-column-gap: 2px;
+    flex-grow: 1;
     overflow-x: scroll;
-    border-collapse: collapse;
     -webkit-overflow-scrolling: touch;
-  }
-  .table-course tbody {
-    height: calc(100% - 37px);
   }
   .table-time-blank {
     height: 47px;
@@ -150,16 +143,10 @@
     cursor: pointer;
   }
   .table-time {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 2rem;
+    flex-shrink: 0;
+    width: 32px;
     height: 100%;
-    background: #fff;
-    z-index: 99;
-  }
-  .ios .table-time {
-    position: absolute;
+    background-color: #fff;
   }
   .table-time-morning, .table-time-afternoon {
     height: calc(40% - 18.8px);
@@ -172,61 +159,61 @@
     align-items: center;
     justify-content: center;
   }
-  .table-course th, .table-time {
+  .table-course .head-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .table-course .head-item, .table-time {
     font-weight: 300;
     padding: 0;
     font-size: 10px;
   }
-  .table-course th {
-    padding: 0.2rem 0;
-    height: calc(46px - 0.4rem);
-  }
-  .table-course th.current {
+  .table-course .head-item.current {
     background: #45c8dc;
     color: #fff;
     font-weight: normal;
   }
-  .table-course th > p {
+  .table-course .head-item > p {
     margin: 0;
     line-height: 1.6;
-  }
-  .table-course tbody tr {
-    height: 20%;
-  }
-  .table-course td {
-    padding: 0;
-    width: 10%;
+    text-align: center;
   }
   .table-item {
-    margin: 0.12rem 0.08rem;
-    height: calc(100% - 0.24rem);
+    box-sizing: border-box;
+    height: 100%;
     color: #fff;
-    border-radius: 0.25rem;
+    border-radius: 4px;
     font-size: 10px;
-    padding: 0.3rem 0.3rem 0.1rem;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     position: relative;
   }
+  .border-item {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    background-color: rgb(230,230,230);
+  }
   @media screen and (max-width: 320px) {
-    .table-item, .table-course th, .table-time {
+    .table-item, .table-course .head-item, .table-time {
       font-size: 10px;
     }
   }
   @media screen and (min-width: 321px) and (max-width: 375px) {
-    .table-item, .table-course th, .table-time {
+    .table-item, .table-course .head-item, .table-time {
       font-size: 11px;
     }
   }
   @media screen and (min-width: 376px) and (max-width: 413px) {
-    .table-item, .table-course th, .table-time {
+    .table-item, .table-course .head-item, .table-time {
       font-size: 12px;
     }
   }
   @media screen and (min-width: 414px) {
-    .table-item, .table-course th, .table-time {
+    .table-item, .table-course .head-item, .table-time {
       font-size: 13px;
     }
   }
@@ -276,8 +263,5 @@
   }
   .table-item-invalid {
     color: #666;
-  }
-  .table-border {
-    border-bottom: 1px solid rgb(230,230,230);
   }
 </style>
